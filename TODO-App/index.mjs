@@ -6,6 +6,7 @@ const onClickAdd = () => {
 }
 
 
+
 const creatIncompleteTodo = (todo) => {
     const li = document.createElement("li");
 
@@ -18,7 +19,7 @@ const creatIncompleteTodo = (todo) => {
 
 
     const completeButton = document.createElement("button");
-    completeButton.innerText = "完了";
+    completeButton.className="complete-button"
     //完了ボタンの制御
     completeButton.addEventListener("click", () => {
         const moveTarget = completeButton.closest("li");
@@ -27,7 +28,7 @@ const creatIncompleteTodo = (todo) => {
 
 
         const backButton = document.createElement("button");
-        backButton.innerText = "戻す";
+        backButton.className = "rotate-button"
         //戻すボタンの制御
         backButton.addEventListener("click", () => {
             const todoText = backButton.previousElementSibling.innerText;
@@ -42,14 +43,14 @@ const creatIncompleteTodo = (todo) => {
 
 
     const deleteButton = document.createElement("button");
-    deleteButton.innerText = "削除";
+    deleteButton.className = "trash-button";
     //削除ボタンの制御
     deleteButton.addEventListener("click", () => {
         const deleteTarget = deleteButton.closest("li");
         document.querySelector(".incomplete-list").removeChild(deleteTarget);
     });
 
-    
+
     li.appendChild(div);
     div.append(p, completeButton, deleteButton);
 
