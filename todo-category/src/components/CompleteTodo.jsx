@@ -1,5 +1,6 @@
 export const CompleteTodo = (props) => {
   const { todos, onClick, getCategoryLabel, categorizedTodo } = props;
+
   return (
     <div className="complete-area">
       <p className="title">完了のTODO</p>
@@ -9,7 +10,7 @@ export const CompleteTodo = (props) => {
             (todo) =>
               categorizedTodo === 'all' || todo.category === categorizedTodo,
           )
-          .map((todo, index) => (
+          .map((todo) => (
             <li key={todo.id}>
               <div className="list-row">
                 <span className={`category-label ${todo.category}`}>
@@ -18,7 +19,7 @@ export const CompleteTodo = (props) => {
                 <p className="todo-item">{todo.todoText}</p>
                 <button
                   className="rotate-button"
-                  onClick={() => onClick(index)}
+                  onClick={() => onClick(todo.id)}
                 ></button>
               </div>
             </li>

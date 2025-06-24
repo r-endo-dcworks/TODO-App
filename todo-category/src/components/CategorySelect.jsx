@@ -1,25 +1,29 @@
 export const CategorySelect = ({ handleCategoryClick, categorizedTodo }) => {
+  // TODO: categoriesを別ファイルに切り出す
   const categories = [
-    { key: 'work', label: '仕事' },
-    { key: 'hobby', label: '趣味' },
-    { key: 'study', label: '勉強' },
-    { key: 'all', label: 'すべて' },
+    { id: 1, key: 'work', label: '仕事' },
+    { id: 2, key: 'hobby', label: '趣味' },
+    { id: 3, key: 'study', label: '勉強' },
+    { id: 4, key: 'all', label: 'すべて' },
   ];
 
   return (
     <div className="input-category-area">
       <p className="category-select">
         カテゴリ選択：
-        {categories.map(({ key, label }) => (
+        {categories.map((category) => (
           <button
-            className={categorizedTodo === key ? 'active' : key}
+            key={category.id}
+            className={
+              categorizedTodo === category.key ? 'active' : category.key
+            }
             onClick={() => {
-              if (categorizedTodo !== key) {
-                handleCategoryClick(key);
+              if (categorizedTodo !== category.key) {
+                handleCategoryClick(category.key);
               }
             }}
           >
-            {label}
+            {category.label}
           </button>
         ))}
       </p>
