@@ -6,6 +6,7 @@ export const IncompleteTodo = (props) => {
     getCategoryLabel,
     categorizedTodo,
   } = props;
+
   return (
     <div className="incomplete-area">
       <p className="title">未完了のTODO</p>
@@ -15,7 +16,7 @@ export const IncompleteTodo = (props) => {
             (todo) =>
               categorizedTodo === 'all' || todo.category === categorizedTodo,
           )
-          .map((todo, index) => (
+          .map((todo) => (
             <li key={todo.id}>
               <div className="list-row">
                 <span className={`category-label ${todo.category}`}>
@@ -24,11 +25,11 @@ export const IncompleteTodo = (props) => {
                 <p className="todo-item">{todo.todoText}</p>
                 <button
                   className="complete-button"
-                  onClick={() => onClickComplete(index)}
+                  onClick={() => onClickComplete(todo.id)}
                 ></button>
                 <button
                   className="trash-button"
-                  onClick={() => onClickDelete(index)}
+                  onClick={() => onClickDelete(todo.id)}
                 ></button>
               </div>
             </li>

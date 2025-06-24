@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import './styles.css';
 import { InputTodo } from './components/InputTodo';
+import { CategorySelect } from './components/CategorySelect';
 import { IncompleteTodo } from './components/IncompleteTodo';
 import { CompleteTodo } from './components/CompleteTodo';
-import { CategorySelect } from './components/CategorySelect';
 
 export const App = () => {
   const [todoText, setTodoText] = useState('');
