@@ -1,3 +1,5 @@
+import { categories } from '../utils/categories';
+
 export const InputTodo = (props) => {
   const { todoText, onChangeTodoText, onClick, category, onChangeCategory } =
     props;
@@ -10,24 +12,24 @@ export const InputTodo = (props) => {
         onChange={onChangeTodoText}
       />
 
-      {/* カテゴリ選択ボタン 
-      TODO:　Mapで書き直せるか取り組む
-      */}
       <select
         className="category-select-button"
         value={category}
         onChange={onChangeCategory}
       >
-        <option value="work">仕事</option>
-        <option value="hobby">趣味</option>
-        <option value="study">勉強</option>
+        {/* .slice(0,3)→配列の０以上３未満([0][1][2])を返す */}
+        {categories.slice(0, 3).map((category) => (
+          <option key={category.id} value={category.key}>
+            {category.label}
+          </option>
+        ))}
       </select>
 
       <button
         disabled={todoText === ''}
         className="todo-button"
         onClick={onClick}
-      ></button>
+      />
     </div>
   );
 };

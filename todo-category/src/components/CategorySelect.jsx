@@ -1,12 +1,5 @@
+import { categories } from '../utils/categories';
 export const CategorySelect = ({ handleCategoryClick, categorizedTodo }) => {
-  // TODO: categoriesを別ファイルに切り出す
-  const categories = [
-    { id: 1, key: 'work', label: '仕事' },
-    { id: 2, key: 'hobby', label: '趣味' },
-    { id: 3, key: 'study', label: '勉強' },
-    { id: 4, key: 'all', label: 'すべて' },
-  ];
-
   return (
     <div className="input-category-area">
       <p className="category-select">
