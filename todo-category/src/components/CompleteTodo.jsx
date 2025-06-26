@@ -20,7 +20,7 @@ export const CompleteTodo = (props) => {
                 <button
                   className="rotate-button"
                   onClick={() => onClick(todo.id)}
-                ></button>
+                />
               </div>
             </li>
           ))}

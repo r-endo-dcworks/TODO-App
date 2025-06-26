@@ -26,11 +26,11 @@ export const IncompleteTodo = (props) => {
                 <button
                   className="complete-button"
                   onClick={() => onClickComplete(todo.id)}
-                ></button>
+                />
                 <button
                   className="trash-button"
                   onClick={() => onClickDelete(todo.id)}
-                ></button>
+                />
               </div>
             </li>
           ))}

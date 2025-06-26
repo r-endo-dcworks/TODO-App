@@ -27,28 +27,25 @@ export const App = () => {
   };
 
   //削除処理
-  const onClickDelete = (index) => {
-    const newTodos = [...incompleteTodos];
-    newTodos.splice(index, 1);
+  const onClickDelete = (id) => {
+    const newTodos = incompleteTodos.filter((todo) => todo.id !== id);
     setIncompleteTodos(newTodos);
   };
 
   //完了処理
-  const onClickComplete = (index) => {
-    const newTodos = [...incompleteTodos];
-    newTodos.splice(index, 1);
-    const newCompleteTodos = [...completeTodos, incompleteTodos[index]];
-    setIncompleteTodos(newTodos);
-    setCompleteTodos(newCompleteTodos);
+  //選択されたTODOをcompleteTodosに追加
+  //filterでincompleteTodosから非表示
+  const onClickComplete = (id) => {
+    const newTodos = incompleteTodos.find((todo) => todo.id === id);
+    setIncompleteTodos(incompleteTodos.filter((todo) => todo.id !== id));
+    setCompleteTodos([...completeTodos, newTodos]);
   };
 
   //戻る処理
-  const onClickRotate = (index) => {
-    const newCompleteTodos = [...completeTodos];
-    newCompleteTodos.splice(index, 1);
-    const newIncompleteTodos = [...incompleteTodos, completeTodos[index]];
-    setIncompleteTodos(newIncompleteTodos);
-    setCompleteTodos(newCompleteTodos);
+  const onClickRotate = (id) => {
+    const newTodos = completeTodos.find((todo) => todo.id === id);
+    setCompleteTodos(completeTodos.filter((todo) => todo.id !== id));
+    setIncompleteTodos([...incompleteTodos, newTodos]);
   };
 
   //カテゴリ選択処理
@@ -79,24 +76,19 @@ export const App = () => {
         category={category}
       />
 
-      <CategorySelect
-        handleCategoryClick={handleCategoryClick}
-        categorizedTodo={categorizedTodo}
-      />
+      <CategorySelect {...{ handleCategoryClick, categorizedTodo }} />
 
       <IncompleteTodo
         todos={incompleteTodos}
         onClickComplete={onClickComplete}
         onClickDelete={onClickDelete}
-        getCategoryLabel={getCategoryLabel}
-        categorizedTodo={categorizedTodo}
+        {...{ getCategoryLabel, categorizedTodo }}
       />
 
       <CompleteTodo
         todos={completeTodos}
         onClick={onClickRotate}
-        getCategoryLabel={getCategoryLabel}
-        categorizedTodo={categorizedTodo}
+        {...{ getCategoryLabel, categorizedTodo }}
       />
     </>
   );
